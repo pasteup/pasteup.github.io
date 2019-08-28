@@ -87,6 +87,7 @@ fetch("https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_E
 }).then(response => {
 $("url").href = "https://pasteup.github.io/"+pid;
 	$("url").innerHTML = "pasteup.github.io/"+pid;
+	$("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=pasteup.github.io/"+pid;
 	sw(3);
 });
 }
@@ -116,7 +117,8 @@ $("url").href = "https://pasteup.github.io/"+pid;
     </div>
 		<div id="info3">
     <h2>Paste complete! Access you Stuff here</h2>
-	<a id="url"></a>
+	<a id="url"/>
+	<img id="qr"/>
     </div>
     <p>The paste will be destroyed as soon as it is read.</p>
     
