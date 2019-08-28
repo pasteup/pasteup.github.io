@@ -52,7 +52,7 @@ var url = "pasteup.github.io/srewr";
 		sw(2);
 		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec/item1')
   .then(function(response) {
-      $("txt").value=response;
+      $("txt").value=response.location;
   });
 		//$("url").href = "https://pasteup.github.io/"+url;
 		//$("url").innerHTML = "pasteup.github.io/"+url;
