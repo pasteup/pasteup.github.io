@@ -42,17 +42,22 @@ height: 60vh;
 		}
 </style>
 <script>
+var pid;
 function $(e){
 	return document.getElementById(e);
 }
 function init(){
-var url = "pasteup.github.io/srewr";
-	var url=url.split("pasteup.github.io/")[1];
-	if(url!=""){
+	var url = document.URL;
+	pid=url.split("pasteup.github.io/")[1];
+	if(pid!=""){
 		sw(2);
-		
-		//$("url").href = "https://pasteup.github.io/"+url;
-		//$("url").innerHTML = "pasteup.github.io/"+url;
+		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec?'+pid)
+		.then(function(response){
+		response.text().then(
+		function (text) {
+		$("txt").value = text||' ';
+		})
+		});
 	}else{
 		sw(1);
 		var rnd = Math.random().toString(36).substring(8);
@@ -69,16 +74,23 @@ $("info" + i).style.display = "block";
 function cc(){
 	var txt = $("txt");
 	txt.select();
-	txt.setSelectionRange(0, 99999); /*For mobile devices*/
+	txt.setSelectionRange(0, 99999);
 	document.execCommand("copy");
 }
-function get(){
-fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec')
-  .then(function(response) {
- console.log(' GAS Response: ');
-      $("txt").value=response;
-  }).catch(function(error) {
-  console.log('There has been a problem with your fetch operation: ', error.message);
+function cb(){
+fetch("https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec", {
+    method: 'POST',
+    body: pid+'~`~'+$("txt").value,
+    headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+    }
+}).then(response => {
+    console.log("success:", response);
+	$("url").href = "https://pasteup.github.io/"+pid;
+	$("url").innerHTML = "pasteup.github.io/"+pid;
+	sw(3);
+}).catch(err => {
+    console.log("Error:" + err);
 });
 }
 </script>
@@ -100,9 +112,9 @@ fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_E
     </div>
 	<div id="info2">
     <h2>Paste your stuff here</h2>
-	<button onclick="get();">Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
+	<button onclick="cb();">Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
 	</br></br>
-	 <textarea id="txt"></textarea></br></br>
+	 <textarea id="txt" placeholder="Loading...." autocomplete="off"></textarea></br></br>
 <button>Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
     </div>
 		<div id="info3">
