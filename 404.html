@@ -50,10 +50,13 @@ var url = "pasteup.github.io/srewr";
 	var url=url.split("pasteup.github.io/")[1];
 	if(url!=""){
 		sw(2);
-		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec/item1')
+		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec')
   .then(function(response) {
-      $("txt").value=response.location;
-  });
+			console.log(response);
+      $("txt").value=response;
+  }).catch(function(error) {
+  console.log('There has been a problem with your fetch operation: ', error.message);
+});
 		//$("url").href = "https://pasteup.github.io/"+url;
 		//$("url").innerHTML = "pasteup.github.io/"+url;
 	}else{
