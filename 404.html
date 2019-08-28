@@ -1,33 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PasteUp - The Internet clipboard</title>
+    <style>
+
+        body
+        {
+            background-color:#fbfbfb;
+            font-family: Verdana, Geneva, sans-serif;
+        }
+
+        a
+        {
+            font-weight:bold;
+        }
+
+        h1 {font-size:1.2em;
+			text-align:center;
+			background-color: #666666;
+			-webkit-background-clip: text;
+			-moz-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+		}
+        h2 {font-size:1.1em}
+        li {font-size:1.1em}
+		button{
+			padding: .5em 1em;
+			border: none transparent;
+			cursor: pointer;
+			background-color: #e1e1e1;
+		}
+		textarea {
+background: transparent;
+width: 100%;
+font: inherit;
+color: #000000c9;
+height: 60vh;
+		}
+</style>
 <script>
 function $(e){
 	return document.getElementById(e);
 }
-
+function init(){
+var url = "pasteup.github.io/srewr";
+	var url=url.split("pasteup.github.io/")[1];
+	if(url!=""){
+		sw(2);
+		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec/item1')
+  .then(function(response) {
+      $("txt").value=response;
+  });
+		//$("url").href = "https://pasteup.github.io/"+url;
+		//$("url").innerHTML = "pasteup.github.io/"+url;
+	}else{
+		sw(1);
+		var rnd = Math.random().toString(36).substring(8);
+		$("lnk").href = "https://pasteup.github.io/"+rnd;
+		$("lnk").innerHTML = "pasteup.github.io/"+rnd;
+	}
+}
+function sw(i){
+$("info1").style.display = "none";
+$("info2").style.display = "none";
+$("info3").style.display = "none";
+$("info" + i).style.display = "block";
+}
+function cc(){
+	var txt = $("txt");
+	txt.select();
+	txt.setSelectionRange(0, 99999); /*For mobile devices*/
+	document.execCommand("copy");
+}
 </script>
-<head>
-<body>
-<div class="wrapperStyle">
-    <h1>cl1p.net - The Internet Clipboard</h1>
+</head>
 
-    <div class="line"></div>
-    <h1>How to use:</h1>
+<body onload="init()">
+<div>
+    <h1>PasteUp - The Internet clipboard</h1>
+
+    <div style="border-bottom: solid #cc0000;"></div>
+	<div id="info1">
+    <h2>How to use:</h2>
     <ol>
-        <li>Enter in a URL that starts with cl1p.net. Example <a href="http://cl1p.net/cjizhticog">cl1p.net/cjizhticog</a></li>
+        <li>Enter a random url like <a id="lnk" href=""></a></li>
         <li>Paste in anything you want.</li>
         <li>On anther computer enter the same URL and get your stuff.</li>
         <li>Have a nice day.</li>
     </ol>
-
-    <p>The cl1p is destroyed as soon as it is read.</p>
-
-    <p>Created and maintained by <a href='http://robmayhew.com'>Rob Mayhew</a>. Use at your own risk.</p>
-    <p>v1.2.7 - July 7, 2019</p>
+    </div>
+	<div id="info2">
+    <h2>Paste your stuff here</h2>
+	<button>Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
+	</br></br>
+	 <textarea id="txt"></textarea></br></br>
+<button>Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
+    </div>
+		<div id="info3">
+    <h2>Paste complete! Access you Stuff here</h2>
+	<a id="url"></a>
+    </div>
+    <p>The paste will be destroyed as soon as it is read.</p>
     
     <br/>
-  </div>
-
 </body>
 </html>
