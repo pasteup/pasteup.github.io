@@ -75,7 +75,7 @@ function cc(){
 function get(){
 fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec')
   .then(function(response) {
-			console.log(response);
+			console.log(' GAS Response: '+response.location);
       $("txt").value=response;
   }).catch(function(error) {
   console.log('There has been a problem with your fetch operation: ', error.message);
