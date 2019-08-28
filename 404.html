@@ -50,13 +50,7 @@ var url = "pasteup.github.io/srewr";
 	var url=url.split("pasteup.github.io/")[1];
 	if(url!=""){
 		sw(2);
-		fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec')
-  .then(function(response) {
-			console.log(response);
-      $("txt").value=response;
-  }).catch(function(error) {
-  console.log('There has been a problem with your fetch operation: ', error.message);
-});
+		
 		//$("url").href = "https://pasteup.github.io/"+url;
 		//$("url").innerHTML = "pasteup.github.io/"+url;
 	}else{
@@ -78,6 +72,15 @@ function cc(){
 	txt.setSelectionRange(0, 99999); /*For mobile devices*/
 	document.execCommand("copy");
 }
+function get(){
+fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec')
+  .then(function(response) {
+			console.log(response);
+      $("txt").value=response;
+  }).catch(function(error) {
+  console.log('There has been a problem with your fetch operation: ', error.message);
+});
+}
 </script>
 </head>
 
@@ -97,7 +100,7 @@ function cc(){
     </div>
 	<div id="info2">
     <h2>Paste your stuff here</h2>
-	<button>Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
+	<button onclick="get();">Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
 	</br></br>
 	 <textarea id="txt"></textarea></br></br>
 <button>Create</button>&nbsp;&nbsp;&nbsp;<button onclick="cc();">Copy Text</button>
