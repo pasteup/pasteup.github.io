@@ -85,12 +85,9 @@ fetch("https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_E
         'Content-Type': 'text/plain;charset=utf-8',
     }
 }).then(response => {
-    console.log("success:", response);
-	$("url").href = "https://pasteup.github.io/"+pid;
+$("url").href = "https://pasteup.github.io/"+pid;
 	$("url").innerHTML = "pasteup.github.io/"+pid;
 	sw(3);
-}).catch(err => {
-    console.log("Error:" + err);
 });
 }
 </script>
