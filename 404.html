@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
-<body>
-
-<p>Click the button to display the URL of the document.</p>
-
-<button onclick="myFunction()">Try its</button>
-
-<p id="demo"></p>
-
+<head>
 <script>
-function myFunction() {
-  var x = document.URL;
-  document.getElementById("demo").innerHTML = x;
-    var xhr = new XMLHttpRequest();
-var url = "https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec"; 
-xhr.open("POST", url, true);
-//xhr.setRequestHeader('Content-type','text/html; charset=utf-8');
-var data = '23452github.io';
-xhr.send(data);
+function $(e){
+	return document.getElementById(e);
 }
+
 </script>
+<head>
+<body>
+<div class="wrapperStyle">
+    <h1>cl1p.net - The Internet Clipboard</h1>
+
+    <div class="line"></div>
+    <h1>How to use:</h1>
+    <ol>
+        <li>Enter in a URL that starts with cl1p.net. Example <a href="http://cl1p.net/cjizhticog">cl1p.net/cjizhticog</a></li>
+        <li>Paste in anything you want.</li>
+        <li>On anther computer enter the same URL and get your stuff.</li>
+        <li>Have a nice day.</li>
+    </ol>
+
+    <p>The cl1p is destroyed as soon as it is read.</p>
+
+    <p>Created and maintained by <a href='http://robmayhew.com'>Rob Mayhew</a>. Use at your own risk.</p>
+    <p>v1.2.7 - July 7, 2019</p>
+    
+    <br/>
+  </div>
 
 </body>
 </html>
