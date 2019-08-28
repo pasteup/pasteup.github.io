@@ -2,24 +2,15 @@
 <html>
 <body>
 
-<p>Click the button to display the URL of the document.</p>
-
-<button onclick="myFunction()">Tryss its</button>
-
-<p id="demo"></p>
-
-<script>
-function myFunction() {
-  var x = document.URL;
-  document.getElementById("demo").innerHTML = x;
-    var xhr = new XMLHttpRequest();
-var url = "https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec/item1"; 
-xhr.open("POST", url, true);
-xhr.setRequestHeader('Content-type','text/html; charset=utf-8');
-var data = '23452github.io';
-xhr.send(data);
-}
-</script>
+<form action="https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec">
+  First name:<br>
+  <input type="text" name="param1" value="ABC">
+  <br>
+  Last name:<br>
+  <input type="text" name="param2" value="XYZ">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
 
 </body>
 </html>
