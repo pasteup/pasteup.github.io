@@ -1,1 +1,94 @@
-<!DOCTYPE html><meta content="width=device-width,initial-scale=1"name=viewport><title>PasteUp - The Internet clipboard</title><style>body{background-color:#fbfbfb;font-family:Verdana,Geneva,sans-serif}a{font-weight:700}h1{font-size:1.2em;text-align:center;background-color:#666;-webkit-background-clip:text;-moz-background-clip:text;background-clip:text;color:transparent;text-shadow:rgba(255,255,255,.5) 0 3px 3px}h2{font-size:1.1em}li{font-size:1.1em}button{padding:.5em 1em;border:none transparent;cursor:pointer;background-color:#e1e1e1}textarea{background:0 0;width:100%;font:inherit;color:#000000c9;height:60vh}</style><script>var pid;function $(e){return document.getElementById(e);}function init(){var url=document.URL;pid=url.split("pasteup.github.io/")[1];if(pid!=""){sw(2);fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec?'+pid).then(function(response){response.text().then(function (text){$("txt").value=text||' ';})});}else{sw(1);var rnd=Math.random().toString(36).substring(8);$("lnk").href="https://pasteup.github.io/"+rnd;$("lnk").innerHTML="pasteup.github.io/"+rnd;}}function sw(i){$("info1").style.display="none";$("info2").style.display="none";$("info3").style.display="none";$("info" + i).style.display="block";}function cc(){var txt=$("txt");txt.select();txt.setSelectionRange(0, 99999);document.execCommand("copy");}function cb(){fetch("https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec",{method: 'POST', body: pid+'~`~'+$("txt").value, headers:{'Content-Type': 'text/plain;charset=utf-8',}}).then(response=>{$("url").href="https://pasteup.github.io/"+pid;$("url").innerHTML="pasteup.github.io/"+pid;$("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=pasteup.github.io/"+pid;sw(3);});}</script><body onload=init()><div><h1>PasteUp - The Internet clipboard</h1><div style="border-bottom:solid #c00"></div><div id=info1><h2>How to use:</h2><ol><li>Enter a random url like <a id=lnk href=""></a><li>Paste in anything you want.<li>On anther computer enter the same URL and get your stuff.<li>Have a nice day.</ol></div><div id=info2><h2>Paste your stuff here</h2><button onclick=cb()>Create</button>   <button onclick=cc()>Copy Text</button><br><br><textarea autocomplete=off id=txt placeholder=Loading....></textarea><br><br><button>Create</button>   <button onclick=cc()>Copy Text</button></div><div id=info3 style=text-align:center><h2>Paste complete! Access you Stuff here</h2><a id=url></a><br><br><img id=qr><p>The paste will be destroyed as soon as it is read.</p><br>
+<!DOCTYPE html>
+<meta content="width=device-width,initial-scale=1" name=viewport>
+<title>PasteUp - The Internet clipboard</title>
+<style>
+	body{background-color:#fbfbfb;font-family:Verdana,Geneva,sans-serif}a{font-weight:700}h1{font-size:1.2em;text-align:center;background-color:#666;-webkit-background-clip:text;-moz-background-clip:text;background-clip:text;color:transparent;text-shadow:rgba(255,255,255,.5) 0 3px 3px}h2{font-size:1.1em}li{font-size:1.1em}button{padding:.5em 1em;border:none transparent;cursor:pointer;background-color:#e1e1e1}textarea{background:0 0;width:100%;font:inherit;color:#000000c9;height:60vh}
+</style>
+<script>
+	var pid;
+
+function $(e) {
+    return document.getElementById(e);
+}
+
+function init() {
+	document.body.innerHTML = "poof!";
+    var url = document.URL;
+    pid = url.split("pasteup.github.io/")[1];
+    if (pid != "") {
+        sw(2);
+        fetch('https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec?' + pid).then(function(response) {
+            response.text().then(function(text) {
+                $("txt").value = text || ' ';
+            })
+        });
+    } else {
+        sw(1);
+        var rnd = Math.random().toString(36).substring(8);
+        $("lnk").href = "https://pasteup.github.io/" + rnd;
+        $("lnk").innerHTML = "pasteup.github.io/" + rnd;
+    }
+}
+
+function sw(i) {
+    $("info1").style.display = "none";
+    $("info2").style.display = "none";
+    $("info3").style.display = "none";
+    $("info" + i).style.display = "block";
+}
+
+function cc() {
+    var txt = $("txt");
+    txt.select();
+    txt.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+}
+
+function cb() {
+    fetch("https://script.google.com/macros/s/AKfycbzC0e0FqsKGMIyn4sHluHV95dgywb7M_EsekMr4udG-O3loOuPP/exec", {
+        method: 'POST',
+        body: pid + '~`~' + $("txt").value,
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+        }
+    }).then(response => {
+        $("url").href = "https://pasteup.github.io/" + pid;
+        $("url").innerHTML = "pasteup.github.io/" + pid;
+        $("qr").src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=pasteup.github.io/" + pid;
+        sw(3);
+    });
+}</script>
+
+<body onload=init()>
+	<div>
+		<h1>PasteUp - The Internet clipboard</h1>
+		<div style="border-bottom:solid #c00"></div>
+		<div id=info1>
+			<h2>How to use:</h2>
+			<ol>
+				<li>Enter a random url like
+					<a id=lnk href=""></a>
+					<li>Paste in anything you want.
+						<li>On anther computer enter the same URL and get your stuff.
+							<li>Have a nice day.</ol>
+		</div>
+		<div id=info2>
+			<h2>Paste your stuff here</h2>
+			<button onclick=cb()>Create</button>
+			<button onclick=cc()>Copy Text</button>
+			<br>
+			<br>
+			<textarea autocomplete=off id=txt placeholder=Loading....></textarea>
+			<br>
+			<br>
+			<button>Create</button>
+			<button onclick=cc()>Copy Text</button>
+		</div>
+		<div id=info3 style=text-align:center>
+			<h2>Paste complete! Access you Stuff here</h2>
+			<a id=url></a>
+			<br>
+			<br>
+			<img id=qr>
+			<p>The paste will be destroyed as soon as it is read.</p>
+			<br>
